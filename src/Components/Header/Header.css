@@ -1,0 +1,23 @@
+.header-container {
+  display: flex;
+  height: 40px;
+  width: auto;
+  background-color: grey;
+}
+.nav-list {
+  color: white;
+  display: flex;
+  width: 60vw;
+  justify-content: space-evenly flex-end;
+  align-items: center;
+}
+a:visited {
+  color: white;
+}
+a:hover {
+  color: blue;
+}
+a:link:active,
+a:visited:active {
+  color: blue;
+}

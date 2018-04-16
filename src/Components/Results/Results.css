@@ -1,0 +1,23 @@
+.result-main {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+.result-list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.list {
+  display: inline-block;
+  justify-content: center;
+  align-items: flex-start center;
+  height: 500px;
+  width: 400px;
+  padding-bottom: 40px;
+  flex-direction: column;
+}
+.list-img > img {
+  width: 200px;
+  height: auto;
+}
