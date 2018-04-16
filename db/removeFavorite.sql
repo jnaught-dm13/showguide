@@ -1,0 +1,1 @@
+DELETE FROM favorites WHERE user_id = $1 and show_id = $2

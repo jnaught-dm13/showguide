@@ -1,3 +1,3 @@
 SELECT *
 FROM favorites
-where user_id = $1
+WHERE user_id = $1

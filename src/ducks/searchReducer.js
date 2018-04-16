@@ -5,7 +5,9 @@ const SEARCH_RESULT = "SEARCH_RESULT";
 export function search(query) {
   return {
     type: SEARCH_RESULT,
-    payload: axios.get(`http://api.tvmaze.com/search/shows/?q=${query}`)
+    payload: axios.get(
+      `http://api.tvmaze.com/search/shows/?q=${query}&embed=episodes`
+    )
   };
 }
 const initialState = {
@@ -19,6 +21,7 @@ export default function searchReducer(state = initialState, action) {
         ...state,
         searchResult: action.payload.data
       };
+
     default:
       return state;
   }

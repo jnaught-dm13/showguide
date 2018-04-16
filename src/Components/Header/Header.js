@@ -1,8 +1,10 @@
 import React from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
-export default function Header() {
+const Header = props => {
+  console.log("favs", props.favorite);
   return (
     <header className="header-container">
       <div className="nav-list">
@@ -10,7 +12,7 @@ export default function Header() {
           <div>Home</div>
         </Link>
         <Link to="/favorite">
-          <div>My List {0}</div>
+          <div>My List {props.favorite.length || 0}</div>
         </Link>
         <Link to="/about">
           <div>About</div>
@@ -18,8 +20,13 @@ export default function Header() {
         <Link to="/profile">
           <div>Profile</div>
         </Link>
-        <div>placeholder</div>
+        <Link to="/">
+          <div>Login</div>
+        </Link>
       </div>
     </header>
   );
-}
+};
+const mapStateToProps = state => ({ ...state.favoriteReducer });
+
+export default connect(mapStateToProps)(Header);

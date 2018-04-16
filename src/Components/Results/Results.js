@@ -1,8 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { addToFavorite } from "../../ducks/favoriteReducer";
+import { getuser } from "../../ducks/userReducer";
 import "./Results.css";
 import placeholder from "../images/poster-placeholder.jpg";
 
-export default function Results(props) {
+function Results(props) {
   return (
     <div className="result-main">
       <div>Results Display = functional component- rendered in Search</div>
@@ -30,7 +34,20 @@ export default function Results(props) {
                     ? e.show.network.name
                     : "No Streaming Media Services Found!"}
                 </p>
-                <button>Add To WatchList</button>
+
+                <button
+                  onClick={() =>
+                    props.addToFavorite(
+                      e.show.id,
+                      e.show.name,
+                      e.show.image.original,
+                      e.show.genres[0],
+                      e.show.network.name
+                    )
+                  }
+                >
+                  Add To WatchList
+                </button>
                 {console.log(props.results)}
               </div>
             ))
@@ -42,3 +59,6 @@ export default function Results(props) {
     </div>
   );
 }
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps, { addToFavorite })(Results);

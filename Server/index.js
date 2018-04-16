@@ -5,10 +5,13 @@ const cors = require("cors");
 const session = require("express-session");
 const massive = require("massive");
 const passport = require("passport");
-const controller = require("./controllers/favoriteCtrl");
+const {
+  addToFavorite,
+  getFavorite,
+  removeFavorite
+} = require(`${__dirname}/controllers/favoriteCtrl`);
 const { strat, logout, getUser } = require(`${__dirname}/controllers/authCtrl`);
 const { search } = require(`${__dirname}/controllers/searchCtrl`);
-// const { getFavorite } = require(`${__dirname}/controllers/favoriteCtrl`);
 
 const app = express();
 
@@ -61,7 +64,7 @@ passport.deserializeUser((user, done) => {
 app.get(
   "/login",
   passport.authenticate("auth0", {
-    successRedirect: "http://localhost:3000/#/",
+    successRedirect: "http://localhost:3000/dashboard",
     failureRedirect: "http://localhost:3000/#/login"
   })
 );
@@ -69,7 +72,9 @@ app.get("/logout", logout);
 app.get("/api/me", getUser);
 
 app.get("/api/search/:query");
-app.get("/api/favorites", controller.getFavorite);
+app.get("/api/favorite", getFavorite);
+app.post("/api/favorite", addToFavorite);
+app.delete("/api/favorite/:id", removeFavorite);
 
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);
