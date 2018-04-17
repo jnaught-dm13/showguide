@@ -17,7 +17,7 @@
   color: white;
   display: flex;
   width: 60vw;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 }
 a:visited {
@@ -29,4 +29,7 @@ a:hover {
 a:link:active,
 a:visited:active {
   color: blue;
+}
+.nav-button {
+  padding-right: 40px;
 }

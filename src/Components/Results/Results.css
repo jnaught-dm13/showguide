@@ -1,5 +1,8 @@
 .result-main {
+  padding-top: 40px;
+  background-color: rgb(54, 56, 51);
   display: flex;
+  height: 100vh;
   width: 100%;
   flex-direction: column;
 }
@@ -9,15 +12,20 @@
   flex-wrap: wrap;
 }
 .list {
+  padding-top: 10px;
+  background-color: rgb(54, 56, 51);
   display: inline-block;
-  justify-content: center;
-  align-items: flex-start center;
-  height: 500px;
-  width: 400px;
-  padding-bottom: 40px;
+  height: 350px;
+  width: 225px;
   flex-direction: column;
 }
 .list-img > img {
+  padding-top: 10px;
   width: 200px;
-  height: auto;
+  height: 282px;
+}
+.results-title {
+  margin: 0 auto;
+  width: 250px;
+  height: 18px;
 }

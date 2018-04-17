@@ -5,13 +5,14 @@ const cors = require("cors");
 const session = require("express-session");
 const massive = require("massive");
 const passport = require("passport");
+const streamBaseURL = "'https://api.stream-io-api.com/api/v1.0/'";
 const {
   addToFavorite,
   getFavorite,
   removeFavorite
 } = require(`${__dirname}/controllers/favoriteCtrl`);
 const { strat, logout, getUser } = require(`${__dirname}/controllers/authCtrl`);
-const { search } = require(`${__dirname}/controllers/searchCtrl`);
+const { search, getStream } = require(`${__dirname}/controllers/searchCtrl`);
 
 const app = express();
 
@@ -76,6 +77,8 @@ app.get("/api/search/:query");
 app.get("/api/favorite", getFavorite);
 app.post("/api/favorite", addToFavorite);
 app.delete("/api/favorite/:id", removeFavorite);
+app.get(`/api/stream`, getStream);
+app.get("/api/popular");
 
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);

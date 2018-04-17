@@ -5,9 +5,6 @@ import { getUser } from "../../ducks/userReducer";
 import { connect } from "react-redux";
 
 class Favorite extends Component {
-  constructor(props) {
-    super(props);
-  }
   componentDidMount() {
     this.props.getFavorite();
     this.props.getUser();

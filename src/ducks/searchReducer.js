@@ -10,6 +10,7 @@ export function search(query) {
     )
   };
 }
+
 const initialState = {
   searchResult: []
 };

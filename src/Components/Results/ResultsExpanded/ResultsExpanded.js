@@ -1,5 +1,7 @@
 import React from "react";
+import "./ResultsExpanded.css";
 
-export default function resultsExpanded() {
-  return <div>results expanded</div>;
+export default function ResultsExpanded(props) {
+  console.log(props);
+  return <div> hi</div>;
 }

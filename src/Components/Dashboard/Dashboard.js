@@ -13,15 +13,15 @@ class Dashboard extends Component {
       <div className="dashboard-main">
         <div className="dashboard-container">
           <div className="dashboard-top">
-            <p>
-              {" "}
-              User logged in:{" "}
-              {this.props.userReducer.user.name || "Not Logged In"}
-            </p>
+            <div>
+              {this.props.userReducer.user.name || (
+                <a href="http://localhost:3001/login"> LOGIN </a>
+              )}
+            </div>
           </div>
         </div>
         <div className="dashboard-search">
-          <Search />
+          {!this.props.userReducer.user.name || <Search />}
         </div>
       </div>
     );

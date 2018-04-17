@@ -1,16 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { addToFavorite } from "../../ducks/favoriteReducer";
 import { getUser } from "../../ducks/userReducer";
 import "./Results.css";
 import placeholder from "../images/poster-placeholder.jpg";
+import ResultsExpanded from "./ResultsExpanded/ResultsExpanded";
 
 function Results(props) {
   console.log("results", props);
   return (
     <div className="result-main">
-      <div>Results Display = functional component- rendered in Search</div>
       <div className="result-list">
         <div>
           {props.results[0] ? (
@@ -19,15 +18,16 @@ function Results(props) {
                 <div className="list-img">
                   <img
                     src={
-                      e.show.image && e.show.image.original
-                        ? e.show.image.original
+                      e.show.image && e.show.image.medium
+                        ? e.show.image.medium
                         : placeholder
                     }
                     alt=""
                   />
+
+                  <p className="results-title">{e.show.name}</p>
                 </div>
-                <h1>Show: {e.show.name}</h1>
-                <div>Premiered on: {e.show.premiered}</div>
+                {/* <div>Premiered on: {e.show.premiered}</div>
                 <h3>Genres: {e.show.genres}</h3>
                 <p>
                   Find this show on:
@@ -49,7 +49,7 @@ function Results(props) {
                   }
                 >
                   Add To WatchList
-                </button>
+                </button> */}
                 {console.log(props.results)}
               </div>
             ))

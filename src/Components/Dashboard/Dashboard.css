@@ -1,16 +1,16 @@
 .dashboard-main {
   color: white;
-  height: 100%;
+  height: 100vh;
   width: 100vw;
   background-color: rgb(54, 56, 51);
 }
 .dashboard-container {
   display: flex;
   justify-content: space-around;
-  padding-top: 40px;
 }
 .dashboard-search {
   display: flex;
   flex-direction: column;
-  padding-top: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }

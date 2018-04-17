@@ -1,8 +1,11 @@
 .submenu-main {
   display: flex;
-  width: 500px;
-  justify-content: space-between center;
+  width: 100%;
+  justify-content: center;
   color: white;
   padding-top: 85px;
   background-color: rgb(73, 73, 73);
+}
+.submenu-link {
+  padding-right: 40px;
 }

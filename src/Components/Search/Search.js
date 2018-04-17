@@ -12,8 +12,7 @@ class Search extends Component {
   }
   render() {
     return (
-      <div>
-        <p>Search Component - I am inside the Dashboard Component</p>
+      <div className="search-main">
         <input
           type="text"
           placeholder="Search Shows"
