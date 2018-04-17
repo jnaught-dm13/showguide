@@ -4,9 +4,12 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 const Header = props => {
-  console.log("favs", props.favorite);
+  console.log("favs", props);
   return (
     <header className="header-container">
+      <div className="header-title">
+        <h1> Stream Guide</h1>
+      </div>
       <div className="nav-list">
         <Link to="/dashboard">
           <div>Home</div>
@@ -20,6 +23,7 @@ const Header = props => {
         <Link to="/profile">
           <div>Profile</div>
         </Link>
+
         <Link to="/">
           <div>Login</div>
         </Link>

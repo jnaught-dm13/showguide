@@ -1,4 +1,4 @@
 INSERT INTO users
-    (name,authid)
+    (authid, name)
 VALUES
     ($1, $2)

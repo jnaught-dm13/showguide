@@ -30,7 +30,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      maxAge: 10000
+      maxAge: 3600 * 24
     }
   })
 );
@@ -49,7 +49,7 @@ passport.serializeUser((user, done) => {
           .get("db")
           .addUserByAuthid([user.displayName, user.id])
           .then(res => {
-            return done(null, res[0]);
+            return done(null, res);
           })
           .catch(err => console.log(err));
       } else {
@@ -58,6 +58,7 @@ passport.serializeUser((user, done) => {
     })
     .catch(err => console.log(err));
 });
+
 passport.deserializeUser((user, done) => {
   return done(null, user);
 });

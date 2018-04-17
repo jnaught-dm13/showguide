@@ -1,14 +1,23 @@
+@import url("https://fonts.googleapis.com/css?family=Acme");
+
 .header-container {
   display: flex;
-  height: 40px;
-  width: auto;
-  background-color: grey;
+  justify-content: space-between;
+  height: 80px;
+  width: 100vw;
+  background-color: rgb(73, 73, 73);
+  position: fixed;
+}
+.header-title {
+  color: white;
+  font-family: "Acme", sans-serif;
+  margin: 0px 0px 0px 15px;
 }
 .nav-list {
   color: white;
   display: flex;
   width: 60vw;
-  justify-content: space-evenly flex-end;
+  justify-content: space-around;
   align-items: center;
 }
 a:visited {
