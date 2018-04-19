@@ -12,6 +12,7 @@ class Search extends Component {
       searchInput: ""
     };
   }
+
   render() {
     return (
       <div className="search-main">
