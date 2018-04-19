@@ -6,7 +6,7 @@
   height: 80px;
   width: 100vw;
   background-color: rgb(73, 73, 73);
-  position: fixed;
+  /* position: fixed; */
 }
 .header-title {
   color: white;
@@ -16,8 +16,8 @@
 .nav-list {
   color: white;
   display: flex;
-  width: 60vw;
-  justify-content: center;
+  width: 30vw;
+  justify-content: space-around;
   align-items: center;
 }
 a:visited {

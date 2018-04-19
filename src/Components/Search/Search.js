@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Results from "../Results/Results";
+import Test from "../Results/ResultsTest";
+import "./Search.css";
 import { search } from "../../ducks/searchReducer";
 
 class Search extends Component {
@@ -25,7 +27,8 @@ class Search extends Component {
         >
           search
         </button>
-        <Results results={this.props.searchResult} />
+        <Test />
+        {/* <Results results={this.props.searchResult} /> */}
       </div>
     );
   }

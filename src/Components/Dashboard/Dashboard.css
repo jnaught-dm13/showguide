@@ -1,4 +1,29 @@
+#initial-search {
+  display: flex;
+  height: 20%;
+  flex-wrap: wrap;
+  background-color: rgb(54, 56, 51);
+}
+.test {
+  margin: 30px;
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
+.test > img {
+  border-radius: 10px;
+  background-color: black;
+  padding: 30px;
+  height: 200px;
+  width: auto;
+  object-fit: contain;
+}
+.test > img:hover {
+  transition: height 0.5s ease;
+  height: 205px;
+}
 .dashboard-main {
+  padding-top: 10px;
   color: white;
   height: 100vh;
   width: 100vw;
@@ -13,4 +38,7 @@
   flex-direction: column;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+.title {
+  margin: -20px;
 }

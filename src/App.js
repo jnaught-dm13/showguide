@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import routes from "./routes";
+import { withRouter } from "react-router-dom";
 import "./App.css";
 import Header from "./Components/Header/Header";
 import { getUser } from "./ducks/userReducer";
@@ -20,4 +21,4 @@ class App extends Component {
   }
 }
 const mapStateToProps = state => state;
-export default connect(mapStateToProps, { getUser })(App);
+export default withRouter(connect(mapStateToProps, { getUser })(App));

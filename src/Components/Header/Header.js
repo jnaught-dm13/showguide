@@ -11,7 +11,7 @@ const Header = props => {
         <h1> Stream Guide</h1>
       </div>
       <div className="nav-list">
-        <Link to="/dashboard">
+        <Link to="/">
           <div>Home</div>
         </Link>
         <Link to="/favorite">
@@ -22,10 +22,6 @@ const Header = props => {
         </Link>
         <Link to="/profile">
           <div>Profile</div>
-        </Link>
-
-        <Link to="/">
-          <div>Login</div>
         </Link>
       </div>
     </header>

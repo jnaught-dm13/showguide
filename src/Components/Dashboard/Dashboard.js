@@ -3,9 +3,13 @@ import Search from "../Search/Search";
 import "./Dashboard.css";
 import { connect } from "react-redux";
 import { getUser } from "../../ducks/userReducer";
+import { initialSearch } from "../../ducks/searchReducer";
+import { addToFavorite } from "../../ducks/favoriteReducer";
+
 class Dashboard extends Component {
   componentDidMount() {
     this.props.getUser();
+    this.props.initialSearch();
   }
   render() {
     console.log(this.props);
@@ -23,10 +27,24 @@ class Dashboard extends Component {
         <div className="dashboard-search">
           {!this.props.userReducer.user.name || <Search />}
         </div>
+        <div>
+          <div id="initial-search">
+            {this.props.searchReducer.initialSearch.map((e, i) => (
+              <div key={i} className="test">
+                <img src={e.image.medium} alt="" />
+                <div className="title">{e.name}</div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => state;
-export default connect(mapStateToProps, { getUser })(Dashboard);
+export default connect(mapStateToProps, {
+  getUser,
+  initialSearch,
+  addToFavorite
+})(Dashboard);
