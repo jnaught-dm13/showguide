@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Search from "../Search/Search";
+import Results from "../Results/Results";
 import "./Dashboard.css";
 import { connect } from "react-redux";
 import { getUser } from "../../ducks/userReducer";
@@ -24,28 +25,36 @@ class Dashboard extends Component {
           </div>
         </div>
         <div className="dashboard-search">
-          {!this.props.userReducer.user.name || <Search />}
+          {!this.props.userReducer.user.name ? <Results /> : <Search />}
         </div>
-        <div>
-          <div id="initial-search">
-            {this.props.searchReducer.initialSearch.map((e, i) => (
-              <div key={i} className="test">
-                <img
-                  src={e.image.medium}
-                  alt=""
-                  onClick={() => this.props.search(e.name)}
-                />
 
-                <div className="title">
-                  {" "}
-                  {e.name} <br />
-                  watch on:{" "}
-                  {(e.network && e.network.name) ||
-                    (e.webChannel && e.webChannel.name)}
+        <div>
+          {!this.props.userReducer.user.name ? (
+            "Please Log In"
+          ) : (
+            <div id="initial-search">
+              {this.props.searchReducer.initialSearch.map((e, i) => (
+                <div key={i} className="test">
+                  <img
+                    src={e.image.medium}
+                    alt=""
+                    onClick={() => this.props.search(e.name)}
+                  />
+
+                  <div className="title">
+                    {" "}
+                    <p>
+                      {" "}
+                      {e.name} <br />
+                      watch on:{" "}
+                      {(e.network && e.network.name) ||
+                        (e.webChannel && e.webChannel.name)}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     );

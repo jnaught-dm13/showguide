@@ -12,13 +12,21 @@ class Search extends Component {
       searchInput: ""
     };
   }
-
+  // componentDidMount(){
+  //   this.props.searchRes
+  // }
   render() {
+    console.log(this.props.result.length);
     return (
       <div className="search-main">
         <input
           type="text"
           placeholder="Search Shows"
+          onKeyPress={e => {
+            if (e.key === "Enter") {
+              this.props.search(this.state.searchInput);
+            }
+          }}
           onChange={e => this.setState({ searchInput: e.target.value })}
         />
         <button
@@ -28,12 +36,15 @@ class Search extends Component {
         >
           search
         </button>
-        <Test />
-        {/* <Results results={this.props.searchResult} /> */}
+        {this.props.result.length === 0 ? <Results /> : <Test />}
       </div>
     );
   }
 }
-const mapStateToProps = state => ({ ...state.searchReducer });
+const mapStateToProps = state => {
+  return {
+    result: state.searchReducer.searchResult
+  };
+};
 
 export default connect(mapStateToProps, { search })(Search);

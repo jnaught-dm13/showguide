@@ -102,7 +102,7 @@ class ResultsTest extends Component {
             </div>
           </div>
         ) : (
-          "Search Something"
+          ""
         )}
       </div>
     );

@@ -1,70 +1,97 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
+import { initialSearch } from "../../ducks/searchReducer";
 import { addToFavorite } from "../../ducks/favoriteReducer";
-import { getUser } from "../../ducks/userReducer";
-import "./Results.css";
 import placeholder from "../images/poster-placeholder.jpg";
-// import ResultsExpanded from "./ResultsExpanded/ResultsExpanded";
+import "./ResultsTest.css";
+class ResultsTest extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      index: 0
+    };
+  }
 
-function Results(props) {
-  console.log("results", props);
-  return (
-    <div className="result-main">
-      {/* <ResultsExpanded props={props} /> */}
+  componentWillReceiveProps(nextProps) {
+    if (
+      this.props.searchReducer.initialSearch !==
+      nextProps.searchReducer.initialSearch
+    ) {
+      this.setState({ index: 0 });
+    }
+  }
+  goToNext = () => {
+    if (
+      this.state.index !==
+      this.props.searchReducer.initialSearch.length - 1
+    ) {
+      this.setState({ index: this.state.index + 1 });
+    } else {
+      alert("No more results");
+    }
+  };
+  goToPrevious = () => {
+    if (this.state.index !== 0) {
+      this.setState({ index: this.state.index - 1 });
+    } else {
+      alert("No more results");
+    }
+  };
 
-      <div className="result-list">
-        <div className="wrapper">
-          {props.results.map((e, i) => (
-            <div className="list" key={i}>
-              <div className="list-img">
+  render() {
+    const result = this.props.searchReducer.initialSearch[this.state.index];
+    console.log("result", result);
+    return (
+      <div>
+        {result ? (
+          <div className="results-main">
+            <div className="results-container">
+              <div className="image-container">
                 <img
                   src={
-                    e.show.image && e.show.image.medium
-                      ? e.show.image.medium
+                    result.image && result.image.medium
+                      ? result.image.medium
                       : placeholder
                   }
                   alt=""
                 />
+                <div className="align-button">
+                  <button className="buttons" onClick={this.goToPrevious}>
+                    Previous
+                  </button>
+                  <button className="buttons" onClick={this.goToNext}>
+                    Next
+                  </button>
+                </div>
+              </div>
+              <div className="moreinfo">
+                <h1 className="results-title">{result.name}</h1>
 
-                <p className="results-title">{e.show.name}</p>
-              </div>
-              <div>
-                <button
-                  onClick={() =>
-                    props.addToFavorite(
-                      e.show.id,
-                      e.show.name,
-                      e.show.image.original,
-                      e.show.genres[0],
-                      e.show.network.name,
-                      props.user.id
-                    )
-                  }
-                >
-                  Add To WatchList
-                </button>
-              </div>
-              <div className="info">
-                <div>Premiered on: {e.show.premiered}</div>
-                <p>Genres: {e.show.genres}</p>
-                <p>
-                  Find this show on:
-                  {e.show.network && e.show.network.name
-                    ? e.show.network.name
-                    : "No Streaming Media Services Found!"}
-                </p>
-                {e.show.summary}
+                <div className="info">
+                  <div>Premiered on: {result.premiered}</div>
+                  <p>Genres: {result.genres}</p>
+
+                  {result.summary}
+                  <p>
+                    Watch on:{" "}
+                    {result.webChannel && result.webChannel.name
+                      ? result.webChannel.name
+                      : result.network && result.network.name
+                        ? result.network.name
+                        : " No Streaming Data Found!"}
+                  </p>
+                </div>
               </div>
             </div>
-          ))}
-        </div>
-        <div />
+          </div>
+        ) : (
+          ""
+        )}
       </div>
-    </div>
-  );
+    );
+  }
 }
-const mapStateToProps = state => ({
-  ...state.userReducer
-});
-
-export default connect(mapStateToProps, { addToFavorite, getUser })(Results);
+const mapStateToProps = state => state;
+export default connect(mapStateToProps, { initialSearch, addToFavorite })(
+  ResultsTest
+);
