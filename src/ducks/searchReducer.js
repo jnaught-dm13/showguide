@@ -2,19 +2,19 @@ import axios from "axios";
 
 const SEARCH_RESULT = "SEARCH_RESULT";
 const INITIAL_SEARCH_RESULT = "INITIAL_SEARCH_RESULT";
-const CLEAR_SEARCH_RESULT = "CLEAR_SEARCH_RESULT";
+const SEARCH_EPISODE = "SEARCH_EPISODE";
 
-export function clearSearch(clear) {
-  return {
-    type: CLEAR_SEARCH_RESULT,
-    payload: clear
-  };
-}
 export function search(query) {
   return {
     type: SEARCH_RESULT,
+    payload: axios.get(`http://api.tvmaze.com/search/shows/?q=${query}`)
+  };
+}
+export function searchEpisodes(id) {
+  return {
+    type: SEARCH_EPISODE,
     payload: axios.get(
-      `http://api.tvmaze.com/search/shows/?q=${query}&embed=episodes`
+      ` http://api.tvmaze.com/shows/${id}?embed[]=episodes&embed[]=seasons`
     )
   };
 }
@@ -26,7 +26,9 @@ export function initialSearch(query) {
 }
 const initialState = {
   searchResult: [],
-  initialSearch: []
+  initialSearch: [],
+  episodes: [],
+  seasons: []
 };
 
 export default function searchReducer(state = initialState, action) {
@@ -42,11 +44,14 @@ export default function searchReducer(state = initialState, action) {
         ...state,
         initialSearch: action.payload.data
       };
-    case `${CLEAR_SEARCH_RESULT}_FULFILLED`:
+    case `${SEARCH_EPISODE}_FULFILLED`:
+      console.log(action.payload.data._embedded);
       return {
         ...state,
-        searchResult: []
+        episodes: action.payload.data._embedded.episodes,
+        seasons: action.payload.data._embedded.seasons
       };
+
     default:
       return state;
   }

@@ -2,6 +2,8 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  padding-top: 80px;
+  color: white;
 }
 .fav-list {
   padding-right: 20px;

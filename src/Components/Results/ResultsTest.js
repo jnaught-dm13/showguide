@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { search } from "../../ducks/searchReducer";
+import { search, searchEpisodes } from "../../ducks/searchReducer";
 import { addToFavorite } from "../../ducks/favoriteReducer";
 import placeholder from "../images/poster-placeholder.jpg";
 import "./ResultsTest.css";
@@ -83,17 +83,19 @@ class ResultsTest extends Component {
               <div className="fav-button">
                 <button
                   className="buttons"
-                  onClick={() =>
-                    this.props.addToFavorite(
-                      item.show.id,
-                      item.show.name,
-                      item.show.image.original,
-                      item.show.genres[0],
-                      !item.show.network
-                        ? item.show.webChannel.name
-                        : item.show.network.name,
-                      this.props.userReducer.user.id
-                    )
+                  onClick={
+                    () =>
+                      this.props.addToFavorite(
+                        item.show.id,
+                        item.show.name,
+                        item.show.image.original,
+                        item.show.genres[0],
+                        !item.show.network
+                          ? item.show.webChannel.name
+                          : item.show.network.name,
+                        this.props.userReducer.user.id
+                      )
+                    // .then(() => this.props.episodes(item.show.id))
                   }
                 >
                   Add To WatchList
@@ -109,4 +111,8 @@ class ResultsTest extends Component {
   }
 }
 const mapStateToProps = state => state;
-export default connect(mapStateToProps, { search, addToFavorite })(ResultsTest);
+export default connect(mapStateToProps, {
+  search,
+  searchEpisodes,
+  addToFavorite
+})(ResultsTest);
