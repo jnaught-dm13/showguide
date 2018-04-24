@@ -15,8 +15,6 @@ class Favorite extends Component {
     console.log(this.props);
     return (
       <div className="favorites">
-        <FavoriteExpanded favProps={this.props} />
-
         {this.props.favorite[0]
           ? this.props.favorite.map((e, i) => (
               <div className="fav-list" key={i}>
@@ -26,6 +24,7 @@ class Favorite extends Component {
                 </div>
                 <p> Title: {e.name}</p>
                 <p> Network: {e.network}</p>
+                <FavoriteExpanded name={this.props} />
                 <button onClick={() => this.props.searchEpisodes(e.show_id)}>
                   more info
                 </button>

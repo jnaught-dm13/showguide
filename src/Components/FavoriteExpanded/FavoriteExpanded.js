@@ -3,6 +3,6 @@ import "./FavoriteExpanded.css";
 
 export default function ResultsExpanded(props) {
   console.log(props);
-  return <div> {console.log("props", props)}</div>;
+  return <div> {props.episodes}</div>;
 }
 // ?embed[]=episodes&embed[]=cast
