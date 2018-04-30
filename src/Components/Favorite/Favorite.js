@@ -7,33 +7,56 @@ import { getUser } from "../../ducks/userReducer";
 import { connect } from "react-redux";
 
 class Favorite extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      show_image: "",
+      show_id: 0
+    };
+  }
   componentDidMount() {
     this.props.getFavorite();
     this.props.getUser();
   }
   render() {
+    console.log(this.state.show_image);
     console.log(this.props);
     return (
-      <div className="favorites">
-        {this.props.favorite[0]
-          ? this.props.favorite.map((e, i) => (
-              <div className="fav-list" key={i}>
-                <div className="fav-images">
-                  {" "}
-                  <img src={e.image} alt="" />
+      <div>
+        <div className="favorites">
+          {this.props.favorite[0]
+            ? this.props.favorite.map((e, i) => (
+                <div className="fav-list" key={i}>
+                  <div className="fav-images">
+                    {" "}
+                    <img src={e.image} alt="" />
+                  </div>
+                  <p> Title: {e.name}</p>
+                  <p> Network: {e.network}</p>
+                  <button
+                    onClick={event => {
+                      this.setState({
+                        show_image: e.image,
+                        show_id: e.show_id
+                      });
+                      this.props.searchEpisodes(e.show_id);
+                    }}
+                  >
+                    more info
+                  </button>
+                  <button onClick={() => this.props.removeFavorite(e.show_id)}>
+                    Remove
+                  </button>
                 </div>
-                <p> Title: {e.name}</p>
-                <p> Network: {e.network}</p>
-                <FavoriteExpanded name={this.props} />
-                <button onClick={() => this.props.searchEpisodes(e.show_id)}>
-                  more info
-                </button>
-                <button onClick={() => this.props.removeFavorite(e.show_id)}>
-                  Remove
-                </button>
-              </div>
-            ))
-          : "Add Shows To Your List"}
+              ))
+            : "Add Shows To Your List"}
+        </div>
+        <div className="fav-expanded">
+          <FavoriteExpanded
+            image={this.state.show_image}
+            show_id={this.state.show_id}
+          />
+        </div>
       </div>
     );
   }

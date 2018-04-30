@@ -29,9 +29,19 @@ const removeFavorite = (req, res) => {
     .then(response => getFavorite(req, res))
     .catch(err => console.log(err));
 };
+const updateWatch = (req, res) => {
+  console.log("watch update hit", req.params);
+  const { show_id } = req.params;
+  req.app
+    .get("db")
+    .updateWatch([show_id, req.user.id])
+    .then(response => res.status(200).json(response))
+    .catch(err => res.status(500).json(err));
+};
 
 module.exports = {
   getFavorite,
   addToFavorite,
-  removeFavorite
+  removeFavorite,
+  updateWatch
 };

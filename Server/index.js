@@ -9,7 +9,8 @@ const streamBaseURL = "'https://api.stream-io-api.com/api/v1.0/'";
 const {
   addToFavorite,
   getFavorite,
-  removeFavorite
+  removeFavorite,
+  updateWatch
 } = require(`${__dirname}/controllers/favoriteCtrl`);
 const { strat, logout, getUser } = require(`${__dirname}/controllers/authCtrl`);
 const { search, getStream } = require(`${__dirname}/controllers/searchCtrl`);
@@ -79,6 +80,7 @@ app.post("/api/favorite", addToFavorite);
 app.delete("/api/favorite/:id", removeFavorite);
 app.get(`/api/stream`, getStream);
 app.get("/api/popular");
+app.put("/api/favorite", updateWatch);
 
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);
