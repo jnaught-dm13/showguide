@@ -1,4 +1,6 @@
-INSERT INTO seasons
-    (show_id,episodes,user_id)
-VALUES
-    ($1, $2, $3)
+UPDATE seasons
+SET season = $2, episode_id = $3 WHERE show_id = $1 AND user_id = $;
+
+SELECT episode_id
+FROM seasons
+WHERE show_id = $1 AND user_id = $2;

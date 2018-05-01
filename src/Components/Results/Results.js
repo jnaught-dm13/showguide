@@ -71,7 +71,7 @@ class ResultsTest extends Component {
                   <div>Premiered on: {result.premiered}</div>
                   <p>Genres: {result.genres}</p>
 
-                  {result.summary}
+                  {result.summary.replace(/<\/?[^>]+(>|$)/g, "")}
                   <p>
                     Watch on:{" "}
                     {result.webChannel && result.webChannel.name

@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import "./Favorite.css";
 import FavoriteExpanded from "../FavoriteExpanded/FavoriteExpanded";
-import { getFavorite, removeFavorite } from "../../ducks/favoriteReducer";
+import {
+  getFavorite,
+  removeFavorite,
+  getWatched
+} from "../../ducks/favoriteReducer";
 import { searchEpisodes } from "../../ducks/searchReducer";
 import { getUser } from "../../ducks/userReducer";
 import { connect } from "react-redux";
@@ -40,6 +44,7 @@ class Favorite extends Component {
                         show_id: e.show_id
                       });
                       this.props.searchEpisodes(e.show_id);
+                      this.props.getWatched(e.show_id);
                     }}
                   >
                     more info
@@ -71,5 +76,6 @@ export default connect(mapStateToProps, {
   getFavorite,
   removeFavorite,
   getUser,
-  searchEpisodes
+  searchEpisodes,
+  getWatched
 })(Favorite);

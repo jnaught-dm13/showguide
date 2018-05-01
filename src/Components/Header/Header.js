@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 
 const Header = props => {
   console.log("favs", props);
+
   return (
     <header className="header-container">
       <div className="header-title">

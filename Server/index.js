@@ -10,7 +10,8 @@ const {
   addToFavorite,
   getFavorite,
   removeFavorite,
-  updateWatch
+  updateWatch,
+  getWatched
 } = require(`${__dirname}/controllers/favoriteCtrl`);
 const { strat, logout, getUser } = require(`${__dirname}/controllers/authCtrl`);
 const { search, getStream } = require(`${__dirname}/controllers/searchCtrl`);
@@ -30,10 +31,10 @@ app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: false,
-    cookie: {
-      maxAge: 3600 * 24
-    }
+    saveUninitialized: false
+    // cookie: {
+    //   maxAge: 3600 * 24
+    // }
   })
 );
 app.use(passport.initialize());
@@ -78,9 +79,8 @@ app.get("/api/search/:query");
 app.get("/api/favorite", getFavorite);
 app.post("/api/favorite", addToFavorite);
 app.delete("/api/favorite/:id", removeFavorite);
-app.get(`/api/stream`, getStream);
-app.get("/api/popular");
 app.put("/api/favorite", updateWatch);
+app.get("/api/favorite/:show", getWatched);
 
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);

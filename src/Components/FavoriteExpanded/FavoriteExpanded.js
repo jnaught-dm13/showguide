@@ -37,8 +37,11 @@ class ResultsExpanded extends Component {
   }
   render() {
     const show = this.props.show_id;
-    console.log(this.props, show);
-    // console.log("episodes", this.state.episodes, this.state.seasons);
+    const seasonCount = this.state.seasons.map((x, i) => x.number);
+    // console.log(this.state.seasons.length);
+    // console.log(this.props, show);
+    console.log(seasonCount);
+    console.log("seasons", this.state.seasons);
     return (
       <div className="expanded-start">
         {this.state.episodes[0] ? (
@@ -92,7 +95,18 @@ class ResultsExpanded extends Component {
                     </div>
                     <br />
                     <div className="watch-button">
-                      <button onClick={() => updateWatch(show)}>Watched</button>
+                      {e.season === seasonCount &&
+                      e.number < this.props.favoriteReducer.episodeWatch ? (
+                        "Seen"
+                      ) : (
+                        <button
+                          onClick={() =>
+                            this.props.updateWatch(show, e.id, e.season)
+                          }
+                        >
+                          Watched this episode
+                        </button>
+                      )}
                     </div>
                   </div>
                 ))}

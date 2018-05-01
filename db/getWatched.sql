@@ -1,0 +1,1 @@
+SELECT episode_id FROM seasons WHERE show_id = $1 AND user_id = $2

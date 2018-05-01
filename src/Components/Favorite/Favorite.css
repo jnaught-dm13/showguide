@@ -1,12 +1,17 @@
 .favorites {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+
+  justify-content: flex-start;
+  overflow: scroll;
   padding-top: 80px;
   color: white;
 }
 .fav-list {
   padding-right: 20px;
+  padding-bottom: 20px;
+}
+.fav-images {
+  width: 300px;
 }
 .fav-images > img {
   height: 250px;

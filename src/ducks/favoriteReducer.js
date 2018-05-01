@@ -3,7 +3,8 @@ import axios from "axios";
 const GET_FAVORITE = "GET_FAVORITE";
 const ADD_TO_FAVORITE = "ADD_TO_FAVORITE";
 const REMOVE_FROM_FAVORITE = "REMOVE_FROM_FAVORITE";
-const EPISODE_WATCH = "EPISODE_WATCH";
+const EPISODE_ID = "EPISODE_ID";
+const GET_WATCHED = "GET_WATCHED";
 
 export function addToFavorite(id, name, image, genre, network) {
   console.log(id, name, image, genre, network);
@@ -12,10 +13,16 @@ export function addToFavorite(id, name, image, genre, network) {
     payload: axios.post(`/api/favorite`, { id, name, image, genre, network })
   };
 }
-export function updateWatch(show) {
+export function updateWatch(show, id, season) {
   return {
-    type: EPISODE_WATCH,
-    payload: axios.put(`/api/favorite`)
+    type: EPISODE_ID,
+    payload: axios.put(`/api/favorite`, { show, id, season })
+  };
+}
+export function getWatched(show) {
+  return {
+    type: GET_WATCHED,
+    payload: axios.get(`/api/favorite/${show}`)
   };
 }
 export function getFavorite() {
@@ -33,10 +40,12 @@ export function removeFavorite(id) {
 
 const initialState = {
   favorite: {},
-  episodeWatch: 0
+  episodeId: 0,
+  getWatched: 0
 };
 
 export default function userReducer(state = initialState, action) {
+  console.log(action);
   switch (action.type) {
     case `${GET_FAVORITE}_FULFILLED`:
       return {
@@ -53,10 +62,15 @@ export default function userReducer(state = initialState, action) {
         ...state,
         favorite: action.payload.data
       };
-    case `${EPISODE_WATCH}_FULFILLED`:
+    case `${EPISODE_ID}_FULFILLED`:
       return {
         ...state,
-        episodeWatch: action.payload.data
+        episodeId: action.payload.data
+      };
+    case `${GET_WATCHED}_FULFILLED`:
+      return {
+        ...state,
+        getWatched: action.payload.data
       };
     default:
       return state;
