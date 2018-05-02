@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./FavoriteExpanded.css";
-import { getFavorite, updateWatch } from "../../ducks/favoriteReducer";
+import {
+  getFavorite,
+  updateWatch,
+  getWatched
+} from "../../ducks/favoriteReducer";
 
 import placeholder from "../images/poster-placeholder.jpg";
 
@@ -100,9 +104,10 @@ class ResultsExpanded extends Component {
                         "Seen"
                       ) : (
                         <button
-                          onClick={() =>
-                            this.props.updateWatch(show, e.id, e.season)
-                          }
+                          onClick={() => {
+                            this.props.updateWatch(show, e.id, e.season);
+                            this.props.getWatched(e.show_id);
+                          }}
                         >
                           Watched this episode
                         </button>
@@ -124,5 +129,6 @@ const mapStateToProps = state => state;
 export default connect(mapStateToProps, {
   searchEpisodes,
   getFavorite,
-  updateWatch
+  updateWatch,
+  getWatched
 })(ResultsExpanded);

@@ -44,7 +44,7 @@ class Favorite extends Component {
                         show_id: e.show_id
                       });
                       this.props.searchEpisodes(e.show_id);
-                      this.props.getWatched(e.show_id);
+                      // this.props.getWatched(e.show_id);
                     }}
                   >
                     more info

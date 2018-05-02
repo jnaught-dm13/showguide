@@ -40,8 +40,8 @@ export function removeFavorite(id) {
 
 const initialState = {
   favorite: {},
-  episodeId: 0,
-  getWatched: 0
+  episodeId: [],
+  getWatched: []
 };
 
 export default function userReducer(state = initialState, action) {
