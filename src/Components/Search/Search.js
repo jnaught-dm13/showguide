@@ -12,11 +12,9 @@ class Search extends Component {
       searchInput: ""
     };
   }
-  // componentDidMount(){
-  //   this.props.searchRes
-  // }
+
   render() {
-    console.log(this.props.result.length);
+    // console.log(this.props.result.length);
     return (
       <div className="search-main">
         <input

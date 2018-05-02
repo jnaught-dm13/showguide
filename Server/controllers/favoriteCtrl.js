@@ -8,10 +8,7 @@ const getFavorite = (req, res) => {
       console.log(response);
       res.status(200).json(response);
     })
-    .catch(err => {
-      console.log(err);
-      // res.status(500).json(err);
-    });
+    .catch(err => res.status(500).json(err));
 };
 const addToFavorite = (req, res) => {
   // console.log("add to Favorite hit", req.body, req.user.id);
@@ -48,7 +45,15 @@ const getWatched = (req, res) => {
     .get("db")
     .getWatched([show, req.user.id])
     .then(response => res.status(200).json(response))
-    .catch(err => console.log(err));
+    .catch(err => res.status(500).json(err));
+};
+const removeWatch = (req, res) => {
+  console.log("remove watch ", req.params);
+  req.app
+    .get("db")
+    .removeWatch([req.params.ep_id, req.user.id, req.params.show_id])
+    .then(response => res.status(200).json(response))
+    .catch(err => res.status(500).json(err));
 };
 
 module.exports = {
@@ -56,5 +61,6 @@ module.exports = {
   addToFavorite,
   removeFavorite,
   updateWatch,
-  getWatched
+  getWatched,
+  removeWatch
 };

@@ -23,8 +23,8 @@ class Favorite extends Component {
     this.props.getUser();
   }
   render() {
-    console.log(this.state.show_image);
-    console.log(this.props);
+    // console.log(this.state.show_image);
+    // console.log(this.props);
     return (
       <div>
         <div className="favorites">
@@ -36,7 +36,7 @@ class Favorite extends Component {
                     <img src={e.image} alt="" />
                   </div>
                   <p> Title: {e.name}</p>
-                  <p> Network: {e.network}</p>
+                  <p> Watch On: {e.network}</p>
                   <button
                     onClick={event => {
                       this.setState({
@@ -44,7 +44,7 @@ class Favorite extends Component {
                         show_id: e.show_id
                       });
                       this.props.searchEpisodes(e.show_id);
-                      // this.props.getWatched(e.show_id);
+                      this.props.getWatched(e.show_id);
                     }}
                   >
                     more info

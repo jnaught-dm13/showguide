@@ -32,7 +32,7 @@ const initialState = {
 };
 
 export default function searchReducer(state = initialState, action) {
-  console.log(action.type);
+  // console.log(action.type);
   switch (action.type) {
     case `${SEARCH_RESULT}_FULFILLED`:
       return {
@@ -45,7 +45,7 @@ export default function searchReducer(state = initialState, action) {
         initialSearch: action.payload.data
       };
     case `${SEARCH_EPISODE}_FULFILLED`:
-      console.log(action.payload.data._embedded);
+      // console.log(action.payload.data._embedded);
       return {
         ...state,
         episodes: action.payload.data._embedded.episodes,

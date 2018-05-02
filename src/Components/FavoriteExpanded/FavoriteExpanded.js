@@ -4,7 +4,8 @@ import "./FavoriteExpanded.css";
 import {
   getFavorite,
   updateWatch,
-  getWatched
+  getWatched,
+  removeWatch
 } from "../../ducks/favoriteReducer";
 
 import placeholder from "../images/poster-placeholder.jpg";
@@ -36,16 +37,16 @@ class ResultsExpanded extends Component {
   }
 
   seasonChange(value) {
-    console.log(value);
+    // console.log(value);
     this.setState({ currentSeason: value });
   }
   render() {
     const show = this.props.show_id;
     const seasonCount = this.state.seasons.map((x, i) => x.number);
     // console.log(this.state.seasons.length);
-    // console.log(this.props, show);
-    console.log(seasonCount);
-    console.log("seasons", this.state.seasons);
+    console.log(this.props, show);
+    // console.log(seasonCount);
+    // console.log("seasons", this.state.seasons);
     return (
       <div className="expanded-start">
         {this.state.episodes[0] ? (
@@ -99,9 +100,17 @@ class ResultsExpanded extends Component {
                     </div>
                     <br />
                     <div className="watch-button">
-                      {e.season === seasonCount &&
-                      e.number < this.props.favoriteReducer.episodeWatch ? (
-                        "Seen"
+                      {this.props.favoriteReducer.getWatched
+                        .map(ep => ep.episode_id)
+                        .includes(e.id) ? (
+                        <button
+                          onClick={() => {
+                            this.props.removeWatch(e.id, show);
+                            console.log(e.id);
+                          }}
+                        >
+                          Un-Watch
+                        </button>
                       ) : (
                         <button
                           onClick={() => {
@@ -130,5 +139,6 @@ export default connect(mapStateToProps, {
   searchEpisodes,
   getFavorite,
   updateWatch,
-  getWatched
+  getWatched,
+  removeWatch
 })(ResultsExpanded);

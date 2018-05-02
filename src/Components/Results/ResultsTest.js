@@ -83,19 +83,17 @@ class ResultsTest extends Component {
               <div className="fav-button">
                 <button
                   className="buttons"
-                  onClick={
-                    () =>
-                      this.props.addToFavorite(
-                        item.show.id,
-                        item.show.name,
-                        item.show.image.original,
-                        item.show.genres[0],
-                        !item.show.network
-                          ? item.show.webChannel.name
-                          : item.show.network.name,
-                        this.props.userReducer.user.id
-                      )
-                    // .then(() => this.props.episodes(item.show.id))
+                  onClick={() =>
+                    this.props.addToFavorite(
+                      item.show.id,
+                      item.show.name,
+                      item.show.image.original,
+                      item.show.genres[0],
+                      !item.show.network
+                        ? item.show.webChannel.name
+                        : item.show.network.name,
+                      this.props.userReducer.user.id
+                    )
                   }
                 >
                   Add To WatchList

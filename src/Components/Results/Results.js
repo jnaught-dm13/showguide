@@ -40,7 +40,7 @@ class ResultsTest extends Component {
 
   render() {
     const result = this.props.searchReducer.initialSearch[this.state.index];
-    console.log("result", result);
+    // console.log("result", result);
     return (
       <div>
         {result ? (

@@ -11,7 +11,8 @@ const {
   getFavorite,
   removeFavorite,
   updateWatch,
-  getWatched
+  getWatched,
+  removeWatch
 } = require(`${__dirname}/controllers/favoriteCtrl`);
 const { strat, logout, getUser } = require(`${__dirname}/controllers/authCtrl`);
 const { search, getStream } = require(`${__dirname}/controllers/searchCtrl`);
@@ -79,6 +80,7 @@ app.get("/api/search/:query");
 app.get("/api/favorite", getFavorite);
 app.post("/api/favorite", addToFavorite);
 app.delete("/api/favorite/:id", removeFavorite);
+app.delete("/api/favorite/:ep_id/:show_id", removeWatch);
 app.put("/api/favorite", updateWatch);
 app.get("/api/favorite/:show", getWatched);
 
