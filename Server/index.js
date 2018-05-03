@@ -2,6 +2,10 @@ require("dotenv").config();
 const express = require("express");
 const { json } = require("body-parser");
 const cors = require("cors");
+const SERVER_CONFIGS = require("./constants/server");
+
+const configureServer = require("./server");
+const configureRoutes = require("./routes");
 const session = require("express-session");
 const massive = require("massive");
 const passport = require("passport");
@@ -12,12 +16,15 @@ const {
   removeFavorite,
   updateWatch,
   getWatched,
-  removeWatch
+  removeWatch,
+  getCount
 } = require(`${__dirname}/controllers/favoriteCtrl`);
 const { strat, logout, getUser } = require(`${__dirname}/controllers/authCtrl`);
 const { search, getStream } = require(`${__dirname}/controllers/searchCtrl`);
 
 const app = express();
+configureServer(app);
+configureRoutes(app);
 
 const port = process.env.PORT || 3001;
 
@@ -78,6 +85,7 @@ app.get("/api/me", getUser);
 
 app.get("/api/search/:query");
 app.get("/api/favorite", getFavorite);
+app.get("/api/favorite/:show_id", getCount);
 app.post("/api/favorite", addToFavorite);
 app.delete("/api/favorite/:id", removeFavorite);
 app.delete("/api/favorite/:ep_id/:show_id", removeWatch);

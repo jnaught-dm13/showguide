@@ -6,6 +6,7 @@ const REMOVE_FROM_FAVORITE = "REMOVE_FROM_FAVORITE";
 const UPDATE_WATCH = "UPDATE_WATCH";
 const GET_WATCHED = "GET_WATCHED";
 const REMOVE_WATCH = "REMOVE_WATCH";
+const GET_COUNT = "GET_COUNT";
 
 export function addToFavorite(id, name, image, genre, network) {
   // console.log(id, name, image, genre, network);
@@ -45,11 +46,18 @@ export function removeFavorite(id) {
     payload: axios.delete(`/api/favorite/${id}`)
   };
 }
+export function getCount(show_id) {
+  return {
+    type: GET_COUNT,
+    payload: axios.get(`/api/favorite/${show_id}`)
+  };
+}
 
 const initialState = {
   favorite: {},
   episodeId: [],
-  getWatched: []
+  getWatched: [],
+  count: []
 };
 
 export default function userReducer(state = initialState, action) {
@@ -84,6 +92,11 @@ export default function userReducer(state = initialState, action) {
       return {
         ...state,
         getWatched: action.payload.data
+      };
+    case `${GET_COUNT}_FULFILLED`:
+      return {
+        ...state,
+        count: action.payload.data
       };
     default:
       return state;

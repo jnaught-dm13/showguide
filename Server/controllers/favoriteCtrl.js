@@ -55,6 +55,17 @@ const removeWatch = (req, res) => {
     .then(response => res.status(200).json(response))
     .catch(err => res.status(500).json(err));
 };
+const getCount = (req, res) => {
+  console.log(req.params.show_id, req.user_id);
+  req.app
+    .get("db")
+    .getCount([req.params.show_id, req.user_id])
+    .then(response => {
+      console.log("getCount ", response);
+      res.status(200).json(response);
+    })
+    .catch(err => res.status(500).json(err));
+};
 
 module.exports = {
   getFavorite,
@@ -62,5 +73,6 @@ module.exports = {
   removeFavorite,
   updateWatch,
   getWatched,
-  removeWatch
+  removeWatch,
+  getCount
 };

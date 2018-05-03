@@ -5,7 +5,8 @@ import {
   getFavorite,
   updateWatch,
   getWatched,
-  removeWatch
+  removeWatch,
+  getCount
 } from "../../ducks/favoriteReducer";
 
 import placeholder from "../images/poster-placeholder.jpg";
@@ -18,7 +19,8 @@ class ResultsExpanded extends Component {
     this.state = {
       episodes: [],
       currentSeason: 1,
-      seasons: []
+      seasons: [],
+      episodesWatched: []
     };
     this.seasonChange = this.seasonChange.bind(this);
   }
@@ -44,7 +46,7 @@ class ResultsExpanded extends Component {
     const show = this.props.show_id;
     const seasonCount = this.state.seasons.map((x, i) => x.number);
     // console.log(this.state.seasons.length);
-    console.log(this.props, show);
+    console.log("fav-expanded", this.props, show);
     // console.log(seasonCount);
     // console.log("seasons", this.state.seasons);
     return (
@@ -64,7 +66,8 @@ class ResultsExpanded extends Component {
                     </option>
                   ))}
                 </select>
-              }
+              }{" "}
+              episodes watched:
             </div>
             <div className="expanded-main">
               <div className="expanded-title-image" />
@@ -105,7 +108,9 @@ class ResultsExpanded extends Component {
                         .includes(e.id) ? (
                         <button
                           onClick={() => {
-                            this.props.removeWatch(e.id, show);
+                            this.props
+                              .removeWatch(e.id, show)
+                              .then(res => this.props.getCount(e.show_id));
                             console.log(e.id);
                           }}
                         >
@@ -115,10 +120,12 @@ class ResultsExpanded extends Component {
                         <button
                           onClick={() => {
                             this.props.updateWatch(show, e.id, e.season);
-                            this.props.getWatched(e.show_id);
+                            this.props
+                              .getWatched(e.show_id)
+                              .then(response => this.props.getCount(e.show_id));
                           }}
                         >
-                          Watched this episode
+                          Watch this episode
                         </button>
                       )}
                     </div>
@@ -140,5 +147,6 @@ export default connect(mapStateToProps, {
   getFavorite,
   updateWatch,
   getWatched,
-  removeWatch
+  removeWatch,
+  getCount
 })(ResultsExpanded);

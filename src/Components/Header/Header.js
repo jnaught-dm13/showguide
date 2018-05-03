@@ -1,10 +1,11 @@
 import React from "react";
 import "./Header.css";
+import Checkout from "../../Checkout";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 const Header = props => {
-  // console.log("favs", props);
+  console.log("header", props);
 
   return (
     <header className="header-container">
@@ -24,6 +25,18 @@ const Header = props => {
         <Link to="/profile">
           <div>Profile</div>
         </Link>
+        {!props.props.userReducer.user.name |
+        props.props.userReducer.user.name ? (
+          " "
+        ) : (
+          <p className="App-intro">
+            <Checkout
+              name={"MOAR BEER PLEEZ"}
+              description={"FREE BEER"}
+              amount={1}
+            />
+          </p>
+        )}
       </div>
     </header>
   );

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { search, searchEpisodes } from "../../ducks/searchReducer";
-import { addToFavorite } from "../../ducks/favoriteReducer";
+import { addToFavorite, getFavorite } from "../../ducks/favoriteReducer";
 import placeholder from "../images/poster-placeholder.jpg";
 import "./ResultsTest.css";
 class ResultsTest extends Component {
@@ -36,6 +36,7 @@ class ResultsTest extends Component {
   };
 
   render() {
+    console.log("results", this.props);
     const item = this.props.searchReducer.searchResult[this.state.index];
 
     return (
@@ -81,23 +82,30 @@ class ResultsTest extends Component {
               </div>
 
               <div className="fav-button">
-                <button
-                  className="buttons"
-                  onClick={() =>
-                    this.props.addToFavorite(
-                      item.show.id,
-                      item.show.name,
-                      item.show.image.original,
-                      item.show.genres[0],
-                      !item.show.network
-                        ? item.show.webChannel.name
-                        : item.show.network.name,
-                      this.props.userReducer.user.id
-                    )
-                  }
-                >
-                  Add To WatchList
-                </button>
+                {this.props.favoriteReducer.favorite
+                  .map(e => e.show_id)
+                  .includes(item.show.id) ? (
+                  "On WatchList"
+                ) : (
+                  <button
+                    className="buttons"
+                    onClick={() => {
+                      this.props.addToFavorite(
+                        item.show.id,
+                        item.show.name,
+                        item.show.image.original,
+                        item.show.genres[0],
+                        !item.show.network
+                          ? item.show.webChannel.name
+                          : item.show.network.name,
+                        this.props.userReducer.user.id
+                      );
+                      this.props.getFavorite();
+                    }}
+                  >
+                    Add To WatchList
+                  </button>
+                )}
               </div>
             </div>
           </div>
@@ -112,5 +120,6 @@ const mapStateToProps = state => state;
 export default connect(mapStateToProps, {
   search,
   searchEpisodes,
-  addToFavorite
+  addToFavorite,
+  getFavorite
 })(ResultsTest);
