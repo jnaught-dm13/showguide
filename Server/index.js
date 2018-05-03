@@ -4,6 +4,8 @@ const { json } = require("body-parser");
 const cors = require("cors");
 const SERVER_CONFIGS = require("./constants/server");
 
+const path = require("path");
+
 const configureServer = require("./server");
 const configureRoutes = require("./routes");
 const session = require("express-session");
@@ -21,8 +23,10 @@ const {
 } = require(`${__dirname}/controllers/favoriteCtrl`);
 const { strat, logout, getUser } = require(`${__dirname}/controllers/authCtrl`);
 const { search, getStream } = require(`${__dirname}/controllers/searchCtrl`);
-
 const app = express();
+
+app.use(express.static(`${__dirname}/../build`));
+
 configureServer(app);
 configureRoutes(app);
 
@@ -85,13 +89,16 @@ app.get("/api/me", getUser);
 
 app.get("/api/search/:query");
 app.get("/api/favorite", getFavorite);
-app.get("/api/favorite/:show_id", getCount);
+app.get("/api/count/:show_id", getCount);
 app.post("/api/favorite", addToFavorite);
 app.delete("/api/favorite/:id", removeFavorite);
 app.delete("/api/favorite/:ep_id/:show_id", removeWatch);
 app.put("/api/favorite", updateWatch);
 app.get("/api/favorite/:show", getWatched);
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../build/index.html"));
+});
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);
 });

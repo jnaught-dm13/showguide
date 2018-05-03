@@ -56,13 +56,13 @@ const removeWatch = (req, res) => {
     .catch(err => res.status(500).json(err));
 };
 const getCount = (req, res) => {
-  console.log(req.params.show_id, req.user_id);
+  console.log(req.params.show_id, req.user.id);
   req.app
     .get("db")
-    .getCount([req.params.show_id, req.user_id])
+    .getCount([req.params.show_id, req.user.id])
     .then(response => {
-      console.log("getCount ", response);
-      res.status(200).json(response);
+      console.log("getCount ", response[0].count);
+      res.status(200).json(response[0].count);
     })
     .catch(err => res.status(500).json(err));
 };

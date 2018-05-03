@@ -4,7 +4,8 @@ import FavoriteExpanded from "../FavoriteExpanded/FavoriteExpanded";
 import {
   getFavorite,
   removeFavorite,
-  getWatched
+  getWatched,
+  getCount
 } from "../../ducks/favoriteReducer";
 import { searchEpisodes } from "../../ducks/searchReducer";
 import { getUser } from "../../ducks/userReducer";
@@ -45,6 +46,7 @@ class Favorite extends Component {
                       });
                       this.props.searchEpisodes(e.show_id);
                       this.props.getWatched(e.show_id);
+                      this.props.getCount(e.show_id);
                     }}
                   >
                     more info
@@ -77,5 +79,6 @@ export default connect(mapStateToProps, {
   removeFavorite,
   getUser,
   searchEpisodes,
-  getWatched
+  getWatched,
+  getCount
 })(Favorite);

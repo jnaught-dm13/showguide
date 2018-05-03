@@ -47,9 +47,10 @@ export function removeFavorite(id) {
   };
 }
 export function getCount(show_id) {
+  console.log(show_id);
   return {
     type: GET_COUNT,
-    payload: axios.get(`/api/favorite/${show_id}`)
+    payload: axios.get(`/api/count/${show_id}`)
   };
 }
 
@@ -57,7 +58,7 @@ const initialState = {
   favorite: {},
   episodeId: [],
   getWatched: [],
-  count: []
+  count: 0
 };
 
 export default function userReducer(state = initialState, action) {
@@ -96,7 +97,7 @@ export default function userReducer(state = initialState, action) {
     case `${GET_COUNT}_FULFILLED`:
       return {
         ...state,
-        count: action.payload.data
+        count: Number(action.payload.data)
       };
     default:
       return state;

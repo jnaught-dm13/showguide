@@ -20,7 +20,7 @@ class Dashboard extends Component {
         <div className="dashboard-container">
           <div>
             {this.props.userReducer.user.name || (
-              <a href="http://localhost:3001/login"> LOGIN </a>
+              <a href={process.env.REACT_APP_LOGIN}> LOGIN </a>
             )}
           </div>
         </div>

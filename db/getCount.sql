@@ -1,1 +1,1 @@
-SELECT * FROM favorites f JOIN seasons s ON f.show_id = s.show_id WHERE f.user_id = $1
+SELECT COUNT(*) FROM favorites f JOIN seasons s ON f.show_id = s.show_id WHERE f.user_id = $2 AND s.show_id= $1

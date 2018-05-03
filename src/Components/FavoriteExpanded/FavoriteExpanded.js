@@ -47,6 +47,7 @@ class ResultsExpanded extends Component {
     const seasonCount = this.state.seasons.map((x, i) => x.number);
     // console.log(this.state.seasons.length);
     console.log("fav-expanded", this.props, show);
+    console.log(this.state.episodes);
     // console.log(seasonCount);
     // console.log("seasons", this.state.seasons);
     return (
@@ -67,7 +68,10 @@ class ResultsExpanded extends Component {
                   ))}
                 </select>
               }{" "}
-              episodes watched:
+              <div style={{ color: "white" }}>
+                {" "}
+                episodes watched:{this.props.favoriteReducer.count}
+              </div>
             </div>
             <div className="expanded-main">
               <div className="expanded-title-image" />
@@ -108,9 +112,8 @@ class ResultsExpanded extends Component {
                         .includes(e.id) ? (
                         <button
                           onClick={() => {
-                            this.props
-                              .removeWatch(e.id, show)
-                              .then(res => this.props.getCount(e.show_id));
+                            this.props.removeWatch(e.id, show);
+                            this.props.getCount(show);
                             console.log(e.id);
                           }}
                         >
@@ -120,9 +123,8 @@ class ResultsExpanded extends Component {
                         <button
                           onClick={() => {
                             this.props.updateWatch(show, e.id, e.season);
-                            this.props
-                              .getWatched(e.show_id)
-                              .then(response => this.props.getCount(e.show_id));
+                            this.props.getWatched(e.show_id);
+                            this.props.getCount(show);
                           }}
                         >
                           Watch this episode
