@@ -1,7 +1,15 @@
+.favorite-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
 .favorites {
   display: flex;
-
-  justify-content: flex-start;
+  width: 80vw;
+  /* justify-content: flex-start; */
   overflow: scroll;
   padding-top: 80px;
   color: white;
@@ -10,6 +18,7 @@
   padding-right: 20px;
   padding-bottom: 20px;
 }
+
 .fav-images {
   width: 300px;
 }

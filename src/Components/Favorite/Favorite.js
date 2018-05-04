@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Favorite.css";
+import Slider from "react-slick";
 import FavoriteExpanded from "../FavoriteExpanded/FavoriteExpanded";
 import {
   getFavorite,
@@ -27,7 +28,7 @@ class Favorite extends Component {
     // console.log(this.state.show_image);
     // console.log(this.props);
     return (
-      <div>
+      <div className="favorite-main">
         <div className="favorites">
           {this.props.favorite[0]
             ? this.props.favorite.map((e, i) => (
@@ -44,26 +45,37 @@ class Favorite extends Component {
                         show_image: e.image,
                         show_id: e.show_id
                       });
-                      this.props.searchEpisodes(e.show_id);
-                      this.props.getWatched(e.show_id);
-                      this.props.getCount(e.show_id);
+                      this.props
+                        .searchEpisodes(e.show_id)
+                        .then(res => this.props.getWatched(e.show_id))
+                        .then(response => this.props.getCount(e.show_id));
                     }}
                   >
                     more info
                   </button>
-                  <button onClick={() => this.props.removeFavorite(e.show_id)}>
+                  <button
+                    onClick={() =>
+                      this.props
+                        .removeFavorite(e.show_id)
+                        .then(this.setState({ show_id: 0 }))
+                    }
+                  >
                     Remove
                   </button>
                 </div>
               ))
-            : "Add Shows To Your List"}
+            : "NOTHING TO DISPLAY"}
         </div>
-        <div className="fav-expanded">
-          <FavoriteExpanded
-            image={this.state.show_image}
-            show_id={this.state.show_id}
-          />
-        </div>
+        {(this.state.show_id > 0) | (this.state.show_id > 0) ? (
+          <div className="fav-expanded">
+            <FavoriteExpanded
+              image={this.state.show_image}
+              show_id={this.state.show_id}
+            />
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     );
   }

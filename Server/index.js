@@ -60,11 +60,13 @@ passport.serializeUser((user, done) => {
     .getUserByAuthid(user.id)
     .then(response => {
       if (!response[0]) {
+        console.log(user);
         app
           .get("db")
-          .addUserByAuthid([user.displayName, user.id])
+          .addUserByAuthid([user.displayName, user.id, user.picture])
           .then(res => {
-            return done(null, res);
+            console.log("added: ", res);
+            return done(null, res[0]);
           })
           .catch(err => console.log(err));
       } else {

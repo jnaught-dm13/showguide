@@ -1,5 +1,7 @@
 import React from "react";
 import axios from "axios";
+import swal from "sweetalert2";
+import beer from "./Components/images/beer.gif";
 import StripeCheckout from "react-stripe-checkout";
 
 import STRIPE_PUBLISHABLE from "./constants/stripe";
@@ -10,7 +12,11 @@ const CURRENCY = "USD";
 const fromEuroToCent = amount => amount * 100;
 
 const successPayment = data => {
-  alert("Thank you for the Frosty Brew!");
+  swal({
+    title: "SWEET!",
+    text: "Thanks for the Frosty beverage!",
+    imageUrl: beer
+  });
 };
 
 const errorPayment = data => {

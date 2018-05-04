@@ -10,21 +10,20 @@ const Header = props => {
   return (
     <header className="header-container">
       <div className="header-title">
-        <h1> Stream Guide</h1>
+        <h1 className="slidein" style={{ color: "rgba(73, 73, 73)" }}>
+          {" "}
+          Stream Guide
+        </h1>
       </div>
-      <div className="nav-list">
-        <Link to="/">
-          <div>Home</div>
+
+      <div className="nav-list ">
+        <Link className="header-links" to="/">
+          <p>SEARCH</p>
         </Link>
-        <Link to="/favorite">
-          <div>My List {props.favorite.length || 0}</div>
+        <Link className="header-links" to="/favorite">
+          <p>MY LIST {props.favorite.length || 0}</p>
         </Link>
-        <Link to="/about">
-          <div>About</div>
-        </Link>
-        <Link to="/profile">
-          <div>Profile</div>
-        </Link>
+
         {!props.props.userReducer.user.name |
         props.props.userReducer.user.name ? (
           " "
@@ -36,6 +35,19 @@ const Header = props => {
               amount={1}
             />
           </p>
+        )}
+        <div className="profile-pic">
+          <img src={props.props.userReducer.user.picture} alt="" />
+        </div>
+        {!props.props.userReducer.user.name ? (
+          props.props.userReducer.user.name
+        ) : (
+          <a
+            href={process.env.REACT_APP_LOGOUT}
+            className="logout header-links"
+          >
+            Logout
+          </a>
         )}
       </div>
     </header>

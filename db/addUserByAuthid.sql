@@ -1,4 +1,6 @@
 INSERT INTO users
-    (authid, name)
+    (authid, name , picture)
 VALUES
-    ($1, $2)
+    ($2, $1, $3)
+
+    RETURNING *

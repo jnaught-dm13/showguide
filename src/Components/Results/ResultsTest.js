@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import swal from "sweetalert2";
 import { search, searchEpisodes } from "../../ducks/searchReducer";
 import { addToFavorite, getFavorite } from "../../ducks/favoriteReducer";
 import placeholder from "../images/poster-placeholder.jpg";
@@ -90,17 +91,19 @@ class ResultsTest extends Component {
                   <button
                     className="buttons"
                     onClick={() => {
-                      this.props.addToFavorite(
-                        item.show.id,
-                        item.show.name,
-                        item.show.image.original,
-                        item.show.genres[0],
-                        !item.show.network
-                          ? item.show.webChannel.name
-                          : item.show.network.name,
-                        this.props.userReducer.user.id
-                      );
-                      this.props.getFavorite();
+                      this.props
+                        .addToFavorite(
+                          item.show.id,
+                          item.show.name,
+                          item.show.image.original,
+                          item.show.genres[0],
+                          !item.show.network
+                            ? item.show.webChannel.name
+                            : item.show.network.name,
+                          this.props.userReducer.user.id
+                        )
+                        .then(res => this.props.getFavorite())
+                        .then(response => swal("added To Favorites"));
                     }}
                   >
                     Add To WatchList

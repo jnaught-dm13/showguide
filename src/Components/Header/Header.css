@@ -17,7 +17,7 @@
   color: white;
   display: flex;
   width: 30vw;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
 }
 a:visited {
@@ -32,4 +32,41 @@ a:visited:active {
 }
 .nav-button {
   padding-right: 40px;
+}
+.profile-pic > img {
+  border-radius: 50px;
+}
+
+/* Testing NAv Buttons */
+
+.slidein {
+  color: rgba(255, 255, 255, 0.212);
+  animation-delay: 3s;
+  animation-duration: 3s;
+  animation-name: slidein;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slidein {
+  from {
+    color: rgba(255, 255, 255, 0.212);
+    margin-left: 420%;
+    width: 200%;
+  }
+
+  to {
+    color: white;
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+.header-links {
+  text-decoration: none;
+}
+.logout {
+  border-radius: 5px;
+  background-color: #f27474;
+  height: 30px;
+  width: 60px;
+  padding-top: 10px;
 }

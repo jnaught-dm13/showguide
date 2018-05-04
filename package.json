@@ -18,10 +18,13 @@
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^4.0.8",
     "react-scripts": "1.1.1",
+    "react-slick": "^0.23.1",
     "react-stripe-checkout": "^2.6.3",
     "redux": "^3.7.2",
     "redux-promise-middleware": "^5.0.0",
-    "stripe": "^5.8.0"
+    "slick-carousel": "^1.8.1",
+    "stripe": "^5.8.0",
+    "sweetalert2": "^7.19.3"
   },
   "scripts": {
     "start": "react-scripts start",

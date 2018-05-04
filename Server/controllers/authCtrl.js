@@ -11,6 +11,7 @@ const strat = new Auth0Strategy(
     callbackURL: "/login"
   },
   function(accessToken, refreshToken, extraParams, profile, done) {
+    console.log("authStrat: ", profile);
     return done(null, profile);
   }
 );

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Search from "../Search/Search";
 import Results from "../Results/Results";
 import "./Dashboard.css";
+import loginbtn from "../images/loginbtn.png";
 import { connect } from "react-redux";
 import { getUser } from "../../ducks/userReducer";
 import { initialSearch, search } from "../../ducks/searchReducer";
@@ -18,16 +19,27 @@ class Dashboard extends Component {
     return (
       <div className="dashboard-main">
         <div className="dashboard-container">
-          <div>
+          {/* <div>
             {this.props.userReducer.user.name || (
               <a href={process.env.REACT_APP_LOGIN}> LOGIN </a>
             )}
-          </div>
+          </div> */}
         </div>
         <div className="dashboard-search">
-          {!this.props.userReducer.user.name ? <Results /> : <Search />}
+          {this.props.userReducer.user.name ? <Search /> : ""}
         </div>
-
+        <div>
+          {this.props.userReducer.user.name || (
+            <div className="home-login">
+              <div className="login-container">
+                <a href={process.env.REACT_APP_LOGIN}>
+                  {" "}
+                  <img src={loginbtn} alt="" />
+                </a>
+              </div>
+            </div>
+          )}
+        </div>
         <div>
           {!this.props.userReducer.user.name ? (
             "Please Log In"
