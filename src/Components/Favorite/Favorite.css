@@ -1,4 +1,5 @@
 .favorite-main {
+  background-image: url("../images/bgimage.jpg");
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,7 +8,9 @@
 }
 
 .favorites {
+  background-color: rgba(54, 56, 51, 0.822);
   display: flex;
+  height: 100vh;
   width: 80vw;
   /* justify-content: flex-start; */
   overflow: scroll;

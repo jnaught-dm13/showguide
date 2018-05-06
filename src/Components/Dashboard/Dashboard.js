@@ -29,8 +29,13 @@ class Dashboard extends Component {
           {this.props.userReducer.user.name ? <Search /> : ""}
         </div>
         <div>
-          {this.props.userReducer.user.name || (
-            <div className="home-login">
+          {this.props.userReducer.user.name ? (
+            " "
+          ) : (
+            <div className="home-login ">
+              <p style={{ color: "black" }}>
+                STREAM GUIDE <br />when you want to find the Network its on!
+              </p>
               <div className="login-container">
                 <a href={process.env.REACT_APP_LOGIN}>
                   {" "}
@@ -42,7 +47,7 @@ class Dashboard extends Component {
         </div>
         <div>
           {!this.props.userReducer.user.name ? (
-            "Please Log In"
+            ""
           ) : (
             <div id="initial-search">
               {this.props.searchReducer.initialSearch.map((e, i) => (

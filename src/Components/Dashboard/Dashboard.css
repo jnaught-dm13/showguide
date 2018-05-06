@@ -28,7 +28,7 @@
 }
 .dashboard-main {
   background-image: url("../images/bgimage.jpg");
-  padding-top: 100px;
+  padding-top: 50px;
   color: white;
   height: 90vh;
   width: 100vw;
@@ -61,8 +61,8 @@
   text-shadow: 2px 2px 2px #000;
 }
 .home-login {
-  height: 400px;
-  width: 600px;
+  height: 80%;
+  width: 35vw;
   background-color: rgba(255, 255, 255, 0.952);
   border-radius: 10px;
   box-shadow: -9px 10px 5px 0px rgba(0, 0, 0, 0.56);
@@ -71,17 +71,35 @@
   border-radius: 8px;
   background-color: blue;
   box-shadow: -9px 10px 5px 0px rgba(0, 0, 0, 0.56);
-
-  height: 40px;
-  width: 150px;
   font-size: 40px;
   color: black;
 }
 .login-container {
   display: flex;
   justify-content: center;
-  padding-top: 140px;
 }
-.login-container > a {
+
+.login-container > a > img {
+  height: 100%;
+  width: 50%;
   text-decoration: none;
+}
+@media screen and (max-width: 922px) {
+  .home-login {
+    background-color: rgb(255, 255, 255);
+  }
+}
+@media screen and (max-width: 414px) {
+  .home-login {
+    padding-top: 60px;
+    height: 70vh;
+    width: 80vw;
+  }
+  .login-container {
+    height: 35%;
+    width: 100%;
+  }
+  #initial-search {
+    display: none;
+  }
 }

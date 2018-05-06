@@ -1,5 +1,4 @@
 .search-main {
-  height: 100%;
-  width: 100%;
-  background-color: rgb(54, 56, 51);
+  height: 100vh;
+  width: 100vw;
 }

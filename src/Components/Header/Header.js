@@ -17,37 +17,31 @@ const Header = props => {
       </div>
 
       <div className="nav-list ">
-        <Link className="header-links" to="/">
-          <p>SEARCH</p>
-        </Link>
-        <Link className="header-links" to="/favorite">
-          <p>MY LIST {props.favorite.length || 0}</p>
-        </Link>
-
         {!props.props.userReducer.user.name |
         props.props.userReducer.user.name ? (
           " "
         ) : (
-          <p className="App-intro">
-            <Checkout
-              name={"MOAR BEER PLEEZ"}
-              description={"FREE BEER"}
-              amount={1}
-            />
-          </p>
-        )}
-        <div className="profile-pic">
-          <img src={props.props.userReducer.user.picture} alt="" />
-        </div>
-        {!props.props.userReducer.user.name ? (
-          props.props.userReducer.user.name
-        ) : (
-          <a
-            href={process.env.REACT_APP_LOGOUT}
-            className="logout header-links"
-          >
-            Logout
-          </a>
+          <div className="nav-list ">
+            <Link className="header-links" to="/">
+              <p className="header-links">SEARCH</p>
+            </Link>
+            <Link className="header-links" to="/favorite">
+              <p>MY LIST {props.favorite.length || 0}</p>
+            </Link>
+            <p>
+              <Checkout
+                name={"MOAR BEER PLEEZ"}
+                description={"FREE BEER"}
+                amount={1}
+              />
+            </p>
+            <div className="profile-pic">
+              <img src={props.props.userReducer.user.picture} alt="" />
+            </div>
+            <a href={process.env.REACT_APP_LOGOUT} className="logout">
+              Logout
+            </a>
+          </div>
         )}
       </div>
     </header>

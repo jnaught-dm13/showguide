@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import LinesEllipsis from "react-lines-ellipsis";
+import responsiveHOC from "react-lines-ellipsis/lib/responsiveHOC";
+
 import swal from "sweetalert2";
 import { search, searchEpisodes } from "../../ducks/searchReducer";
 import { addToFavorite, getFavorite } from "../../ducks/favoriteReducer";
 import placeholder from "../images/poster-placeholder.jpg";
 import "./ResultsTest.css";
+const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis);
 class ResultsTest extends Component {
   constructor(props) {
     super(props);
@@ -25,14 +29,14 @@ class ResultsTest extends Component {
     if (this.state.index !== this.props.searchReducer.searchResult.length - 1) {
       this.setState({ index: this.state.index + 1 });
     } else {
-      alert("No more results");
+      swal("No more results");
     }
   };
   goToPrevious = () => {
     if (this.state.index !== 0) {
       this.setState({ index: this.state.index - 1 });
     } else {
-      alert("No more results");
+      swal("No more results");
     }
   };
 
@@ -67,10 +71,13 @@ class ResultsTest extends Component {
                 <h1 className="results-title">{item.show.name}</h1>
 
                 <div className="info">
-                  <div>Premiered on: {item.show.premiered}</div>
+                  <p>Premiered on: {item.show.premiered}</p>
                   <p>Genres: {item.show.genres}</p>
 
-                  {item.show.summary.replace(/<\/?[^>]+(>|$)/g, "")}
+                  <p className="info-summary">
+                    Summary: {item.show.summary.replace(/<\/?[^>]+(>|$)/g, "")}
+                  </p>
+
                   <p>
                     Watch on:{" "}
                     {item.show.webChannel && item.show.webChannel.name

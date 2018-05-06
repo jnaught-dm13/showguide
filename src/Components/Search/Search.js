@@ -14,7 +14,6 @@ class Search extends Component {
   }
 
   render() {
-    // console.log(this.props.result.length);
     return (
       <div className="search-main">
         <input
