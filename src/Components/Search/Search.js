@@ -17,7 +17,9 @@ class Search extends Component {
     return (
       <div className="search-main">
         <input
+          className="input-box"
           type="text"
+          size="50"
           placeholder="Search Shows"
           onKeyPress={e => {
             if (e.key === "Enter") {

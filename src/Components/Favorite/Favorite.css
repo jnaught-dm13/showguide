@@ -20,6 +20,13 @@
   padding-right: 20px;
   padding-bottom: 20px;
 }
+.fav-list > button {
+  background: linear-gradient(rgb(144, 159, 243), black);
+  color: rgb(188, 188, 226);
+  height: 20px;
+  font-size: 10px;
+  border-radius: 10px;
+}
 
 .fav-images {
   height: 20vh;
@@ -38,7 +45,6 @@
     display: flex;
     height: 40vh;
     width: 80vw;
-    /* justify-content: flex-start; */
     overflow: scroll;
     padding-top: 80px;
     color: white;
@@ -48,9 +54,9 @@
     width: 50px;
     height: auto;
   }
+
   .fav-list {
     font-size: 10px;
     padding: 0px;
-    /* padding-bottom: 10px; */
   }
 }

@@ -116,7 +116,7 @@ class ResultsTest extends Component {
                           this.props.userReducer.user.id
                         )
                         .then(res => this.props.getFavorite())
-                        .then(response => swal("added To Favorites"));
+                        .then(response => swal("Added To Watch List"));
                     }}
                   >
                     Add To WatchList

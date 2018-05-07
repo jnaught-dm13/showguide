@@ -3,7 +3,13 @@
   height: 55vh;
   width: 100vw;
 }
-
+.watch-button > button {
+  background: linear-gradient(rgb(144, 159, 243), black);
+  color: rgb(188, 188, 226);
+  height: 30px;
+  font-size: 10px;
+  border-radius: 10px;
+}
 .expanded-main {
   color: white;
   background-color: rgba(54, 56, 51, 0.52);
@@ -41,7 +47,7 @@
   padding: 10px;
   border-radius: 10px;
   height: 80%;
-  width: 95%;
+  width: 90%;
 }
 .season-list {
   padding-top: 10px;

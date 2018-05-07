@@ -6,6 +6,8 @@
   width: 92vw;
   background-color: rgb(54, 56, 51);
   overflow: scroll;
+  margin: -55px;
+  border-radius: 10px;
 }
 .test {
   margin: 30px 1vw 30px 1vw;

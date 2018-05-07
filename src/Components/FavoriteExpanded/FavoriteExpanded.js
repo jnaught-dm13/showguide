@@ -129,7 +129,7 @@ class ResultsExpanded extends Component {
                               .then(res => this.props.getWatched(e.show_id));
                           }}
                         >
-                          Watch this episode
+                          add to watched
                         </button>
                       )}
                     </div>
