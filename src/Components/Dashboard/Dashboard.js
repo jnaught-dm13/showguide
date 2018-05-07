@@ -34,7 +34,7 @@ class Dashboard extends Component {
           ) : (
             <div className="home-login ">
               <p style={{ color: "black" }}>
-                STREAM GUIDE <br />Your Show and Episode Information!
+                STREAM GUIDE <br />Your Show and Episode Guide!
               </p>
               <div className="login-container">
                 <a href={process.env.REACT_APP_LOGIN}>
