@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Acme");
+
 #initial-search {
   display: flex;
   height: 49vh;
@@ -63,6 +65,9 @@
   text-shadow: 2px 2px 2px #000;
 }
 .home-login {
+  font-family: "Acme", sans-serif;
+  font-weight: bold;
+  font-size: 40px;
   height: 80%;
   width: 35vw;
   background-color: rgba(255, 255, 255, 0.952);
