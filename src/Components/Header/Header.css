@@ -25,11 +25,11 @@ a:visited {
   color: white;
 }
 a:hover {
-  color: blue;
+  color: rgb(255, 255, 255);
 }
 a:link:active,
 a:visited:active {
-  color: blue;
+  color: rgb(255, 255, 255);
 }
 .nav-button {
   padding-right: 40px;
@@ -65,6 +65,7 @@ a:visited:active {
   text-decoration: none;
 }
 .logout {
+  text-decoration: none;
   border-radius: 5px;
   background-color: #f27474;
   height: 30px;

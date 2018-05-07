@@ -21,10 +21,12 @@
   padding-bottom: 20px;
 }
 .fav-list > button {
-  background-color: rgba(144, 159, 243);
-  color: rgb(55, 55, 122);
+  border-style: none;
+  background-color: rgb(48, 157, 247);
+  color: black;
   height: 20px;
   font-size: 10px;
+  font-weight: bold;
   border-radius: 10px;
 }
 

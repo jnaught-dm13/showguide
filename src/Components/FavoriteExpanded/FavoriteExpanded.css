@@ -4,10 +4,12 @@
   width: 100vw;
 }
 .watch-button > button {
-  background-color: rgba(144, 159, 243);
-  color: rgb(55, 55, 122);
+  background-color: rgba(48, 157, 247);
+  color: black;
   height: 30px;
   font-size: 10px;
+  font-weight: bold;
+  border-style: none;
   border-radius: 10px;
 }
 .expanded-main {
