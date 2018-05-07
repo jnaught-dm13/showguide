@@ -88,7 +88,13 @@ class ResultsTest extends Component {
                   </p>
                 </div>
               </div>
-
+              <div className="mobile-networkname">
+                {item.show.webChannel && item.show.webChannel.name
+                  ? item.show.webChannel.name
+                  : item.show.network && item.show.network.name
+                    ? item.show.network.name
+                    : " No Streaming Data Found!"}
+              </div>
               <div className="fav-button">
                 {this.props.favoriteReducer.favorite
                   .map(e => e.show_id)

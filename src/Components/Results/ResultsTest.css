@@ -12,6 +12,9 @@
   width: 90vw;
   box-shadow: -9px 10px 5px 0px rgba(0, 0, 0, 0.56);
 }
+.mobile-networkname {
+  display: none;
+}
 .align-button {
   display: flex;
   justify-content: space-between;
@@ -75,6 +78,9 @@
     height: 70vh;
     width: 90vw;
     box-shadow: -9px 10px 5px 0px rgba(0, 0, 0, 0.56);
+  }
+  .mobile-networkname {
+    display: block;
   }
   .info-summary {
     width: 20vw;
