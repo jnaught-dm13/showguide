@@ -12,8 +12,8 @@
   box-shadow: -9px 10px 5px 0px rgba(0, 0, 0, 0.56);
 }
 .search-main > button {
-  background: linear-gradient(rgb(144, 159, 243), black);
-  color: rgb(188, 188, 226);
+  background-color: rgba(144, 159, 243);
+  color: rgb(55, 55, 122);
   height: 40px;
   font-size: 16px;
   border-radius: 10px;
