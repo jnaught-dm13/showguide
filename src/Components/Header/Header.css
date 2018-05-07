@@ -71,11 +71,24 @@ a:visited:active {
   width: 60px;
   padding-top: 10px;
 }
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 580px) {
   .header-title {
     color: white;
     font-family: "Acme", sans-serif;
     margin: -15px 0px 0px 15px;
     font-size: 10px;
+  }
+  .header-links {
+    width: 50px;
+    font-size: 10px;
+  }
+  .logout {
+    font-size: 7px;
+    height: 15px;
+    width: 30px;
+    padding-top: 10px;
+  }
+  .profile-pic > img {
+    height: 35px;
   }
 }

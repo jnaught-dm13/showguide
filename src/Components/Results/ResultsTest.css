@@ -68,7 +68,7 @@
     width: 60vw;
   }
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 580px) {
   .results-container {
     display: flex;
     flex-direction: column;
@@ -80,7 +80,14 @@
     box-shadow: -9px 10px 5px 0px rgba(0, 0, 0, 0.56);
   }
   .mobile-networkname {
+    padding-top: 150px;
     display: block;
+  }
+  .info {
+    display: none;
+  }
+  .results-title {
+    display: none;
   }
   .info-summary {
     width: 20vw;
@@ -88,5 +95,10 @@
   .fav-button {
     margin-top: -150px;
     padding-left: 10px;
+  }
+  .image-container > img {
+    padding-top: 10px;
+    padding-left: 1vh;
+    height: 24vh;
   }
 }

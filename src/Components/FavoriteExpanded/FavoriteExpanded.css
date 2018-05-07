@@ -1,12 +1,11 @@
 .main {
   display: flex;
-  background-color: rgb(54, 56, 51);
   height: 55vh;
 }
 
 .expanded-main {
   color: white;
-  background-color: rgb(54, 56, 51);
+  background-color: rgba(54, 56, 51, 0.52);
   height: 50vh;
   padding-top: 40px;
   display: flex;
@@ -55,8 +54,117 @@
   width: 700px;
 }
 .expanded-start {
-  background-color: rgb(73, 73, 73);
+  background-color: rgb(73, 73, 73, 0.822);
   height: 50vh;
+  border-radius: 10px;
 }
 .watch-button {
+}
+@media screen and (max-width: 922px) {
+  /* .main {
+    display: flex;
+    height: 55vh;
+  }
+
+  .expanded-main {
+    color: white;
+    background-color: rgb(54, 56, 51);
+    height: 50vh;
+    padding-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: scroll;
+  }
+  .expanded-list {
+    display: flex;
+
+    background-color: black;
+    margin: 20px;
+    border-radius: 10px;
+    padding: 15px;
+    width: 1200px;
+  }
+  .expanded-list > img {
+    height: 150px;
+    width: 287px;
+  }
+  .expanded-title-image > img {
+    height: 500px;
+  }
+  .list {
+    display: flex;
+    flex-direction: column;
+  }
+  .list > img {
+    background-color: black;
+    padding: 10px;
+    border-radius: 10px;
+    height: 450px;
+    width: 311px;
+  }
+  .season-list {
+    padding-top: 10px;
+  }
+  .image-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .info-list {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    width: 700px;
+  }
+  .expanded-start {
+    background-color: rgba(73, 73, 73, 0.746);
+    height: 50vh;
+  } */
+}
+
+@media screen and (max-width: 580px) {
+  .main {
+    display: flex;
+    height: 55vh;
+  }
+  .expanded-main {
+    color: white;
+    height: 50vh;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: scroll;
+    width: 500px;
+  }
+  .expanded-list {
+    display: flex;
+    justify-content: column;
+    background-color: black;
+    width: 425px;
+    font-size: 10px;
+  }
+
+  .list {
+    display: none;
+  }
+  .list > img {
+    display: none;
+  }
+  .season-list {
+    display: none;
+  }
+  .image-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .image-list > img {
+    height: 75px;
+  }
+  .info-list {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    /* width: 700px; */
+  }
+  .expanded-start {
+    height: 50vh;
+  }
 }
