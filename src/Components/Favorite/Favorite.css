@@ -10,9 +10,8 @@
 .favorites {
   background-color: rgba(54, 56, 51, 0.822);
   display: flex;
-  height: 100vh;
-  width: 80vw;
-  /* justify-content: flex-start; */
+  height: 38vh;
+  width: 90vw;
   overflow: scroll;
   padding-top: 80px;
   color: white;
@@ -23,10 +22,11 @@
 }
 
 .fav-images {
+  height: 20vh;
   width: 300px;
 }
 .fav-images > img {
-  height: 250px;
+  height: 150px;
   padding-top: 20px;
 }
 .fav-expanded {

@@ -1,12 +1,14 @@
 .main {
   display: flex;
   height: 55vh;
+  width: 100vw;
 }
 
 .expanded-main {
   color: white;
   background-color: rgba(54, 56, 51, 0.52);
-  height: 50vh;
+  height: 44vh;
+  width: 70vw;
   padding-top: 40px;
   display: flex;
   flex-wrap: wrap;
@@ -14,12 +16,12 @@
 }
 .expanded-list {
   display: flex;
-
   background-color: black;
   margin: 20px;
   border-radius: 10px;
   padding: 15px;
-  width: 1200px;
+  height: 40vh;
+  width: 60vw;
 }
 .expanded-list > img {
   height: 150px;
@@ -32,13 +34,14 @@
   padding: 14px;
   display: flex;
   flex-direction: column;
+  width: 20vw;
 }
 .list > img {
   background-color: black;
   padding: 10px;
   border-radius: 10px;
-  height: 450px;
-  width: 311px;
+  height: 80%;
+  width: 95%;
 }
 .season-list {
   padding-top: 10px;

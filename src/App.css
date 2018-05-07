@@ -1,6 +1,6 @@
 .App {
   height: 100vh;
-
+  background-image: url("./Components/images/bgimage.jpg");
   text-align: center;
 }
 
